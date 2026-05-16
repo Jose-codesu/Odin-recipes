@@ -2,15 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odin Recipes</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Odin Recipes</h1>
 
-    <ul>
-        <li><a href="recipes/lasagna.html">Lasagna</a></li>
-        <li><a href="recipes/tacos.html">Tacos</a></li>
-        <li><a href="recipes/pancakes.html">Pancakes</a></li>
-    </ul>
+    <div class="container">
+
+        <div class="hero">
+            <h1>Odin Recipes</h1>
+            <p>
+                Delicious homemade recipes created while learning web development
+                through The Odin Project.
+            </p>
+        </div>
+
+        <ul class="recipe-list">
+
+            <li class="recipe-card">
+                <a href="recipes/lasagna.html">
+                    <span>🍝</span>
+                    <strong>Lasagna</strong>
+                    <small>Classic Italian layers with rich sauce and cheese.</small>
+                </a>
+            </li>
+
+            <li class="recipe-card">
+                <a href="recipes/tacos.html">
+                    <span>🌮</span>
+                    <strong>Tacos</strong>
+                    <small>Mexican style tacos full of flavor and spice.</small>
+                </a>
+            </li>
+
+            <li class="recipe-card">
+                <a href="recipes/pancakes.html">
+                    <span>🥞</span>
+                    <strong>Pancakes</strong>
+                    <small>Soft and fluffy breakfast pancakes.</small>
+                </a>
+            </li>
+
+        </ul>
+
+        <p class="footer-note">
+            Built by Jose while learning Full Stack Development 🚀
+        </p>
+
+    </div>
+
 </body>
 </html>
