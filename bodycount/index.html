@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bodycount AI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero">
+      <nav class="nav">
+        <div class="brand">Bodycount<span>AI</span></div>
+        <a href="#scanner">Scan Meal</a>
+      </nav>
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">AI calorie tracking concept</p>
+          <h1>Count your calories. Build your body.</h1>
+          <p class="subtitle">Upload a meal photo, estimate macros, and track your daily progress in a clean fitness dashboard.</p>
+          <a class="cta" href="#scanner">Start scanning</a>
+        </div>
+        <div class="phone-card">
+          <div class="score">1,420 <span>kcal today</span></div>
+          <div class="progress"><div></div></div>
+          <div class="macro-row"><span>Protein</span><b>112g</b></div>
+          <div class="macro-row"><span>Carbs</span><b>168g</b></div>
+          <div class="macro-row"><span>Fat</span><b>48g</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="scanner" class="scanner-card">
+      <h2>Meal Scanner</h2>
+      <p>Choose a food photo and Bodycount will generate a realistic demo estimate.</p>
+      <label class="upload-box">
+        <input id="mealInput" type="file" accept="image/*" />
+        <span>📸 Upload meal photo</span>
+      </label>
+      <img id="preview" class="preview hidden" alt="Meal preview" />
+      <button id="analyzeBtn">Analyze Meal</button>
+      <div id="results" class="results hidden">
+        <div><span>Calories</span><strong id="calories">620</strong></div>
+        <div><span>Protein</span><strong id="protein">38g</strong></div>
+        <div><span>Carbs</span><strong id="carbs">55g</strong></div>
+        <div><span>Fat</span><strong id="fat">22g</strong></div>
+      </div>
+    </section>
+
+    <section class="dashboard">
+      <h2>Daily Progress</h2>
+      <div class="goal-card"><span>Daily Goal</span><strong>2,200 kcal</strong></div>
+      <div class="meal-history">
+        <h3>Meal History</h3>
+        <p>Breakfast — 430 kcal</p>
+        <p>Lunch — 620 kcal</p>
+        <p>Dinner — waiting for scan</p>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
