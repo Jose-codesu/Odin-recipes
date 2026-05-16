@@ -52,11 +52,10 @@ img {
 
 .recipe-card a {
     display: block;
-    padding: 28px;
-    min-height: 150px;
+    overflow: hidden;
     text-decoration: none;
     color: #2f241d;
-    background: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.92);
     border: 2px solid rgba(139, 47, 22, 0.12);
     border-radius: 22px;
     box-shadow: 0 18px 40px rgba(139, 47, 22, 0.12);
@@ -70,10 +69,24 @@ img {
     box-shadow: 0 24px 55px rgba(139, 47, 22, 0.2);
 }
 
+.card-image {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
+
+.recipe-card span,
+.recipe-card strong,
+.recipe-card small {
+    padding-left: 22px;
+    padding-right: 22px;
+}
+
 .recipe-card span {
     display: block;
     font-size: 2.5rem;
-    margin-bottom: 18px;
+    margin-top: 18px;
+    margin-bottom: 10px;
 }
 
 .recipe-card strong {
@@ -85,6 +98,7 @@ img {
 
 .recipe-card small {
     display: block;
+    padding-bottom: 24px;
     line-height: 1.5;
     color: #6b5144;
 }
