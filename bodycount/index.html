@@ -4,60 +4,107 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bodycount AI</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#070b14" />
+  <link rel="stylesheet" href="styles.css?v=10" />
 </head>
 <body>
   <main class="app-shell">
+    <nav class="nav">
+      <div class="brand">Bodycount<span>AI</span></div>
+      <div class="nav-links">
+        <a href="#scanner">Scan</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#coach">Coach</a>
+      </div>
+    </nav>
+
     <section class="hero">
-      <nav class="nav">
-        <div class="brand">Bodycount<span>AI</span></div>
-        <a href="#scanner">Scan Meal</a>
-      </nav>
       <div class="hero-grid">
         <div>
-          <p class="eyebrow">AI calorie tracking concept</p>
-          <h1>Count your calories. Build your body.</h1>
-          <p class="subtitle">Upload a meal photo, estimate macros, and track your daily progress in a clean fitness dashboard.</p>
-          <a class="cta" href="#scanner">Start scanning</a>
+          <p class="eyebrow">Smart nutrition tracker</p>
+          <h1>Track meals. Hit macros. Build your body.</h1>
+          <p class="subtitle">Bodycount AI is a complete calorie and macro tracking app prototype with photo upload, manual logging, daily goals, meal history, charts, profile settings, and local saving.</p>
+          <a class="cta" href="#scanner">Start Tracking</a>
         </div>
         <div class="phone-card">
-          <div class="score">1,420 <span>kcal today</span></div>
-          <div class="progress"><div></div></div>
-          <div class="macro-row"><span>Protein</span><b>112g</b></div>
-          <div class="macro-row"><span>Carbs</span><b>168g</b></div>
-          <div class="macro-row"><span>Fat</span><b>48g</b></div>
+          <p class="card-label">Today</p>
+          <div class="score"><span id="heroCalories">0</span><small> / <b id="heroGoal">2200</b> kcal</small></div>
+          <div class="progress"><div id="heroProgress"></div></div>
+          <div class="macro-row"><span>Protein</span><b id="heroProtein">0g</b></div>
+          <div class="macro-row"><span>Carbs</span><b id="heroCarbs">0g</b></div>
+          <div class="macro-row"><span>Fat</span><b id="heroFat">0g</b></div>
         </div>
       </div>
     </section>
 
-    <section id="scanner" class="scanner-card">
-      <h2>Meal Scanner</h2>
-      <p>Choose a food photo and Bodycount will generate a realistic demo estimate.</p>
-      <label class="upload-box">
-        <input id="mealInput" type="file" accept="image/*" />
-        <span>📸 Upload meal photo</span>
-      </label>
-      <img id="preview" class="preview hidden" alt="Meal preview" />
-      <button id="analyzeBtn">Analyze Meal</button>
-      <div id="results" class="results hidden">
-        <div><span>Calories</span><strong id="calories">620</strong></div>
-        <div><span>Protein</span><strong id="protein">38g</strong></div>
-        <div><span>Carbs</span><strong id="carbs">55g</strong></div>
-        <div><span>Fat</span><strong id="fat">22g</strong></div>
+    <section class="grid two" id="scanner">
+      <div class="panel">
+        <h2>Meal Scanner</h2>
+        <p>Upload a meal photo. This version creates a realistic estimate and saves it to your daily log.</p>
+        <label class="upload-box">
+          <input id="mealInput" type="file" accept="image/*" />
+          <span>📸 Upload meal photo</span>
+        </label>
+        <img id="preview" class="preview hidden" alt="Meal preview" />
+        <button id="analyzeBtn">Analyze Photo</button>
+      </div>
+
+      <div class="panel">
+        <h2>Manual Meal</h2>
+        <form id="mealForm" class="form">
+          <input id="mealName" placeholder="Meal name" value="Chicken Bowl" />
+          <input id="mealCalories" type="number" placeholder="Calories" value="620" />
+          <input id="mealProtein" type="number" placeholder="Protein g" value="42" />
+          <input id="mealCarbs" type="number" placeholder="Carbs g" value="58" />
+          <input id="mealFat" type="number" placeholder="Fat g" value="18" />
+          <button type="submit">Add Meal</button>
+        </form>
       </div>
     </section>
 
-    <section class="dashboard">
-      <h2>Daily Progress</h2>
-      <div class="goal-card"><span>Daily Goal</span><strong>2,200 kcal</strong></div>
-      <div class="meal-history">
+    <section id="dashboard" class="panel">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Dashboard</p>
+          <h2>Daily Progress</h2>
+        </div>
+        <button id="resetBtn" class="ghost">Reset Today</button>
+      </div>
+
+      <div class="stats">
+        <div><span>Calories</span><strong id="totalCalories">0</strong></div>
+        <div><span>Protein</span><strong id="totalProtein">0g</strong></div>
+        <div><span>Carbs</span><strong id="totalCarbs">0g</strong></div>
+        <div><span>Fat</span><strong id="totalFat">0g</strong></div>
+      </div>
+
+      <div class="big-progress"><div id="dailyProgress"></div></div>
+      <p id="progressText" class="muted">0% of your daily goal</p>
+
+      <div class="history">
         <h3>Meal History</h3>
-        <p>Breakfast — 430 kcal</p>
-        <p>Lunch — 620 kcal</p>
-        <p>Dinner — waiting for scan</p>
+        <div id="mealHistory"></div>
+      </div>
+    </section>
+
+    <section class="grid two">
+      <div class="panel" id="coach">
+        <h2>AI Coach</h2>
+        <p id="coachText" class="coach-text">Add a meal to get feedback.</p>
+      </div>
+
+      <div class="panel">
+        <h2>Profile Goals</h2>
+        <form id="goalForm" class="form">
+          <input id="goalCalories" type="number" placeholder="Daily calories" value="2200" />
+          <input id="goalProtein" type="number" placeholder="Protein goal g" value="160" />
+          <button type="submit">Save Goals</button>
+        </form>
       </div>
     </section>
   </main>
-  <script src="script.js"></script>
+
+  <script src="script.js?v=10"></script>
 </body>
 </html>
